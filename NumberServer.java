@@ -6,9 +6,11 @@ class Handler implements URLHandler {
     // various requests.
     int num = 0;
 
+    public final String name = "Suki's ";
+
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return String.format("Number: %d", num);
+            return String.format(name + "Number: %d", num);
         } else if (url.getPath().equals("/increment")) {
             num += 1;
             return String.format("Number incremented!");
@@ -28,7 +30,7 @@ class Handler implements URLHandler {
 
 class NumberServer {
     public static void main(String[] args) throws IOException {
-        if(args.length == 0){
+        if (args.length == 0) {
             System.out.println("Missing port number! Try any number between 1024 to 49151");
             return;
         }
