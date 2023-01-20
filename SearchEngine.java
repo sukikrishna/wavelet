@@ -7,10 +7,14 @@ class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
 
+    public final String intro = "Add to the String List!";
+
     List<String> output = new ArrayList<String>();
 
     public String handleRequest(URI url) {
-        if (url.getPath().contains("/add")) {
+        if (url.getPath().equals("/")) {
+            return intro;
+        } else if (url.getPath().contains("/add")) {
             String[] parameters = url.getQuery().split("=");
 
             if (parameters[0].equals("anewstringtoadd")) {
